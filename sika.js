@@ -362,4 +362,16 @@ function initCursorStickers(selector) {
 // Initialize on hero and site footer
 document.addEventListener('DOMContentLoaded', () => {
     initCursorStickers('.hero, .site-footer');
+
+    // Interactive 3D flip for the 20 cedi bill note
+    const wrap = document.getElementById('noteWrap');
+    const note = document.getElementById('note');
+    if (wrap && note) {
+        wrap.addEventListener('mouseenter', () => {
+            note.style.transform = 'scaleX(1) rotateY(0deg)';
+        });
+        wrap.addEventListener('mouseleave', () => {
+            note.style.transform = 'scaleX(0.28) rotateY(55deg)';
+        });
+    }
 });
