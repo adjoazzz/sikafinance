@@ -304,6 +304,58 @@ nav {
     display: inline-block;
 }
 
+.note-wrap {
+    display: inline-block;
+    perspective: 900px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 0 -15px; /* Overlap adjacent text slightly */
+    z-index: 10;
+    position: relative;
+}
+
+.note {
+    width: 130px;
+    height: 63px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15), 0 3px 10px rgba(0,0,0,0.1);
+    transform: scaleX(0.28) rotateY(55deg) rotate(-5deg); /* Folded + tilted default state */
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.note img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.note-wrap:hover .note {
+    transform: scaleX(1) rotateY(0deg) rotate(-3deg); /* Unfolds and tilts slightly */
+}
+
+@media (max-width: 768px) {
+    .note {
+        width: 100px;
+        height: 48px;
+    }
+    .note-wrap {
+        margin: 0 -10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .note {
+        width: 80px;
+        height: 38px;
+    }
+    .note-wrap {
+        margin: 0 -8px;
+    }
+}
+
 
 
 .hero-sub {

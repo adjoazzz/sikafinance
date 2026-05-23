@@ -368,10 +368,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const note = document.getElementById('note');
     if (wrap && note) {
         wrap.addEventListener('mouseenter', () => {
-            note.style.transform = 'scaleX(1) rotateY(0deg)';
+            note.style.transform = 'scaleX(1) rotateY(0deg) rotate(-3deg)';
         });
         wrap.addEventListener('mouseleave', () => {
-            note.style.transform = 'scaleX(0.28) rotateY(55deg)';
+            note.style.transform = 'scaleX(0.28) rotateY(55deg) rotate(-5deg)';
         });
     }
 });
