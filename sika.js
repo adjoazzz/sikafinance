@@ -56,6 +56,20 @@ if (phoneStage) {
     phoneObserver.observe(phoneStage);
 }
 
+// How-it-works card spread observer
+const howContainer = document.getElementById('howCardsContainer');
+if (howContainer) {
+    const howObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                howContainer.classList.add('animate-cards');
+                howObserver.unobserve(howContainer);
+            }
+        });
+    }, { threshold: 0.25 });
+    howObserver.observe(howContainer);
+}
+
 // 4. Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
@@ -368,10 +382,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const note = document.getElementById('note');
     if (wrap && note) {
         wrap.addEventListener('mouseenter', () => {
-            note.style.transform = 'scaleX(1) rotateY(0deg) rotate(-3deg)';
+            note.style.transform = 'translate(-50%, -50%) rotate(-12deg) scaleX(1) rotateY(0deg)';
         });
         wrap.addEventListener('mouseleave', () => {
-            note.style.transform = 'scaleX(0.28) rotateY(55deg) rotate(-5deg)';
+            note.style.transform = 'translate(-50%, -50%) rotate(-18deg) scaleX(0.35) rotateY(50deg)';
         });
     }
 });
