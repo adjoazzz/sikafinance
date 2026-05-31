@@ -1634,18 +1634,16 @@ nav {
 
 .comm-container {
     width: 100%;
-    background: #6366F1;
-    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
-    border-radius: 64px;
-    /* Keeping a large radius but spanning wide */
-    padding: 80px 48px;
+    background: transparent;
+    border-radius: 0;
+    padding: 80px 0 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: #1A1630;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .comm-title {
@@ -1658,6 +1656,7 @@ nav {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    color: #1A1630;
 }
 
 .comm-title .avatars {
@@ -1670,7 +1669,7 @@ nav {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 2px solid rgba(0,0,0,0.1);
     margin-left: -15px;
     background: #eee;
     overflow: hidden;
@@ -1679,7 +1678,7 @@ nav {
 .comm-sub {
     font-family: 'Kalam', cursive;
     font-size: 20px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(26, 22, 48, 0.55);
     margin-bottom: 60px;
     position: relative;
 }
@@ -1689,7 +1688,8 @@ nav {
     left: -40px;
     top: 20px;
     width: 30px;
-    opacity: 0.6;
+    opacity: 0.4;
+    color: #1A1630;
 }
 
 
@@ -1702,8 +1702,7 @@ nav {
 }
 
 .visit-btn {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    background: var(--purple-600);
     padding: 16px 32px;
     border-radius: 12px;
     font-weight: 600;
@@ -1716,7 +1715,7 @@ nav {
 }
 
 .visit-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--purple-400);
 }
 
 /* SECTION 4 — FINAL CTA */
@@ -2341,28 +2340,29 @@ nav {
 /* ── HOW IT WORKS — SPREAD CARDS ──────────────── */
 .how-cards-container {
     position: relative;
-    width: 100%;
-    max-width: 1100px;
-    margin: 60px auto 0;
+    width: 80%;
+    max-width: 1400px;
+    margin: 60px auto 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 460px;
+    min-height: 520px;
 }
 
 .how-cards-spread {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     position: relative;
-    gap: 24px;
+    gap: 32px;
 }
 
 .hw-card {
-    width: 260px;
+    flex: 1;
+    min-width: 0;
     border-radius: 28px;
-    padding: 28px 22px 22px;
-    flex-shrink: 0;
+    padding: 36px 28px 28px;
     position: relative;
     opacity: 0;
     box-shadow:
@@ -2375,36 +2375,37 @@ nav {
         box-shadow 0.3s ease;
 }
 
+/* Alternating tilts: left → right → left */
 .hw-card--sms {
     background: #EEEDFE;
     color: #26215C;
-    transform: translateY(60px) rotate(-8deg);
+    transform: translateY(80px) rotate(-8deg);
     z-index: 1;
 }
 
 .hw-card--ai {
     background: #FCEAE6;
     color: #7F2D11;
-    transform: translateY(90px) rotate(0deg);
-    z-index: 3;
+    transform: translateY(80px) rotate(7deg);
+    z-index: 2;
     transition-delay: 0.15s;
 }
 
 .hw-card--ctrl {
     background: #E2F5F0;
     color: #0A4D3B;
-    transform: translateY(60px) rotate(8deg);
-    z-index: 2;
+    transform: translateY(80px) rotate(-7deg);
+    z-index: 1;
     transition-delay: 0.3s;
 }
 
 .how-cards-container.animate-cards .hw-card { opacity: 1; }
-.how-cards-container.animate-cards .hw-card--sms  { transform: translateY(28px) rotate(-8deg); }
-.how-cards-container.animate-cards .hw-card--ai   { transform: translateY(-14px) rotate(0deg); }
-.how-cards-container.animate-cards .hw-card--ctrl { transform: translateY(28px) rotate(8deg); }
+.how-cards-container.animate-cards .hw-card--sms  { transform: translateY(32px) rotate(-8deg); }
+.how-cards-container.animate-cards .hw-card--ai   { transform: translateY(-10px) rotate(7deg); }
+.how-cards-container.animate-cards .hw-card--ctrl { transform: translateY(32px) rotate(-7deg); }
 
 .hw-card:hover {
-    transform: translateY(-18px) rotate(0deg) !important;
+    transform: translateY(-20px) rotate(0deg) !important;
     z-index: 10 !important;
     box-shadow: 0 40px 80px rgba(0,0,0,0.32), 0 12px 28px rgba(0,0,0,0.18);
 }
