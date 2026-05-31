@@ -2056,8 +2056,9 @@ nav {
 
 /* ── HERO TYPEWRITER CURSOR ─────────────────────────── */
 #typewriter-text {
-    white-space: nowrap;
-    display: inline-block;
+    white-space: normal;
+    display: inline;
+    word-break: break-word;
 }
 
 #typewriter-text::after {
