@@ -279,10 +279,10 @@ nav {
 
 .hero-title {
     font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: clamp(82px, 9vw, 92px);
+    font-size: clamp(32px, 8vw, 92px);
     font-weight: 800;
     line-height: 0.98;
-    letter-spacing: -3px;
+    letter-spacing: -3.5px;
     color: #1A1630;
     /* Premium charcoal shade of black for maximum visibility */
     text-align: center;
@@ -1515,16 +1515,7 @@ nav {
 
     .phone-stage.active .feature-card,
     .feature-card {
-        position: relative !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        transform: none !important;
-        opacity: 1 !important;
-        width: 100% !important;
-        max-width: 400px !important;
-        pointer-events: auto !important;
-        animation: none !important;
+        display: none !important;
     }
 
     .doodle {
