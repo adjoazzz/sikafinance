@@ -1679,7 +1679,7 @@ nav {
     font-family: 'Kalam', cursive;
     font-size: 20px;
     color: rgba(26, 22, 48, 0.55);
-    margin-bottom: 60px;
+    margin-bottom: 24px;
     position: relative;
 }
 
@@ -2342,7 +2342,7 @@ nav {
     position: relative;
     width: 80%;
     max-width: 1400px;
-    margin: 60px auto 60px;
+    margin: 20px auto 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2366,9 +2366,9 @@ nav {
     position: relative;
     opacity: 0;
     box-shadow:
-        0 24px 56px rgba(0,0,0,0.22),
-        0 8px 18px rgba(0,0,0,0.14),
-        inset 0 1px 0 rgba(255,255,255,0.5);
+        0 12px 32px rgba(0,0,0,0.06),
+        0 4px 12px rgba(0,0,0,0.04),
+        inset 0 1px 0 rgba(255,255,255,0.6);
     transition:
         opacity 0.7s ease,
         transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
@@ -2407,7 +2407,9 @@ nav {
 .hw-card:hover {
     transform: translateY(-20px) rotate(0deg) !important;
     z-index: 10 !important;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.32), 0 12px 28px rgba(0,0,0,0.18);
+    box-shadow:
+        0 20px 48px rgba(0,0,0,0.12),
+        0 8px 20px rgba(0,0,0,0.08);
 }
 
 .hw-card__step {
