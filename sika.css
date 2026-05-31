@@ -2638,8 +2638,8 @@ nav {
 }
 
 .compare-good {
-    background: #0D3320;
-    border: 1px solid rgba(255,255,255,0.05);
+    background: linear-gradient(145deg, #534AB7 0%, #3C3489 50%, #D85A30 100%);
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
 .compare-card-header {
