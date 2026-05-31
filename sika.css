@@ -2576,3 +2576,276 @@ nav {
         padding: 60px 24px 40px;
     }
 }
+
+/* ── COMPARISON SECTION ──────────────────────────────────────── */
+/* Append this to the bottom of sika.css                         */
+
+.compare-section {
+    padding: 100px 48px;
+    background: #f4f4f4;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.compare-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.compare-header {
+    text-align: center;
+}
+
+.compare-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    color: #1A1630;
+    margin-bottom: 16px;
+}
+
+.compare-sub {
+    font-size: 16px;
+    color: rgba(26,22,48,0.55);
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+}
+
+.compare-card {
+    border-radius: 28px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.compare-bad {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.compare-good {
+    background: #0D3320;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.compare-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.compare-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.compare-badge-red {
+    background: #FEE2E2;
+    color: #EF4444;
+}
+
+.compare-badge-green {
+    background: rgba(16,185,129,0.2);
+    color: #10B981;
+}
+
+.compare-card-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #1A1630;
+}
+
+.compare-good .compare-card-title {
+    color: #ffffff;
+}
+
+.compare-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.compare-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.compare-item-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ci-red {
+    background: #FEF2F2;
+    color: #EF4444;
+}
+
+.ci-green {
+    background: rgba(16,185,129,0.15);
+    color: #10B981;
+}
+
+.compare-item p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(26,22,48,0.7);
+    padding-top: 7px;
+}
+
+.compare-good .compare-item p {
+    color: rgba(255,255,255,0.8);
+}
+
+@media (max-width: 768px) {
+    .compare-section { padding: 60px 24px; }
+    .compare-grid { grid-template-columns: 1fr; }
+}
+
+/* ── HERO RESPONSIVENESS FIX ─────────────────────────────────── */
+/* Append this to the bottom of sika.css                         */
+/* These rules override the existing hero rules at smaller sizes  */
+
+/* Base fix — constrain inner content so it never bleeds */
+.hero-inner {
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Title — single unified clamp, no breakpoint override fighting it */
+.hero-title {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    /* One clamp that scales smoothly from 320px phone to desktop */
+    font-size: clamp(28px, 7vw, 92px);
+    letter-spacing: clamp(-1px, -0.04em, -3.5px); /* scales with font size */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Subtext — needs width: 100% so max-width actually constrains it */
+.hero-sub {
+    width: 100%;
+    max-width: 560px;
+    box-sizing: border-box;
+}
+
+/* CTA row — button must never stretch wider than its text */
+.hero-cta-row {
+    width: 100%;
+    max-width: 560px;
+    align-self: center;
+}
+
+.hero-cta-row .btn-primary {
+    width: fit-content;
+    min-width: 160px;
+}
+
+/* Success message inline shouldn't overflow either */
+.success-message-inline {
+    max-width: 100%;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+/* Tablet — 600px to 900px */
+@media (max-width: 900px) {
+    .hero {
+        padding: 100px 24px 60px;
+    }
+
+    .hero-title {
+        /* Remove the old override that bumped min to 48px */
+        font-size: clamp(28px, 10vw, 64px);
+        letter-spacing: -1.5px;
+    }
+
+    .hero-sub {
+        font-size: 14px;
+    }
+}
+
+/* Mobile — below 600px */
+@media (max-width: 600px) {
+    .hero {
+        padding: 90px 20px 48px;
+    }
+
+    .hero-inner {
+        gap: 0;
+    }
+
+    .hero-title {
+        font-size: clamp(26px, 9vw, 48px);
+        letter-spacing: -1px;
+        margin-bottom: 16px;
+    }
+
+    .hero-sub {
+        font-size: 13px;
+        line-height: 1.55;
+        margin-bottom: 32px;
+    }
+
+    .hero-cta-row {
+        margin-bottom: 48px;
+    }
+
+    .hero-cta-row .btn-primary {
+        width: 100%;          /* full width on small screens only */
+        text-align: center;
+    }
+
+    .success-message-inline {
+        font-size: 13px;
+        padding: 12px 20px;
+        text-align: center;
+    }
+}
+
+/* Very small — below 380px (small Android phones) */
+@media (max-width: 380px) {
+    .hero {
+        padding: 80px 16px 40px;
+    }
+
+    .hero-title {
+        font-size: clamp(24px, 8vw, 40px);
+        letter-spacing: -0.5px;
+    }
+
+    .hero-eyebrow {
+        font-size: 11px;
+        padding: 5px 12px;
+    }
+}
