@@ -2514,8 +2514,8 @@ nav {
 }
 
 .compare-badge-green {
-    background: rgba(16,185,129,0.2);
-    color: #10B981;
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
 }
 
 .compare-card-title {
@@ -2577,11 +2577,6 @@ nav {
     .compare-grid { grid-template-columns: 1fr; }
 }
 
-/* ── HERO RESPONSIVENESS FIX ─────────────────────────────────── */
-/* Append this to the bottom of sika.css                         */
-/* These rules override the existing hero rules at smaller sizes  */
-
-/* Base fix — constrain inner content so it never bleeds */
 .hero-inner {
     width: 100%;
     max-width: 1200px;
