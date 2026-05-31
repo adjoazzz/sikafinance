@@ -2664,8 +2664,8 @@ nav {
 }
 
 .compare-badge-green {
-    background: rgba(16,185,129,0.2);
-    color: #10B981;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
 }
 
 .compare-card-title {
