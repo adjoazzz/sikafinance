@@ -2338,29 +2338,28 @@ nav {
 
 
 
-
-
 /* ── HOW IT WORKS — SPREAD CARDS ──────────────── */
 .how-cards-container {
     position: relative;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 60px auto 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 400px;
+    min-height: 460px;
 }
 
 .how-cards-spread {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     position: relative;
+    gap: 24px;
 }
 
 .hw-card {
-    width: 268px;
+    width: 260px;
     border-radius: 28px;
     padding: 28px 22px 22px;
     flex-shrink: 0;
@@ -2379,15 +2378,14 @@ nav {
 .hw-card--sms {
     background: #EEEDFE;
     color: #26215C;
-    transform: translateX(60px) translateY(40px) rotate(-6deg);
-    margin-right: -48px;
+    transform: translateY(60px) rotate(-8deg);
     z-index: 1;
 }
 
 .hw-card--ai {
     background: #FCEAE6;
     color: #7F2D11;
-    transform: translateY(80px) rotate(1deg);
+    transform: translateY(90px) rotate(0deg);
     z-index: 3;
     transition-delay: 0.15s;
 }
@@ -2395,19 +2393,18 @@ nav {
 .hw-card--ctrl {
     background: #E2F5F0;
     color: #0A4D3B;
-    transform: translateX(-60px) translateY(40px) rotate(5deg);
-    margin-left: -48px;
+    transform: translateY(60px) rotate(8deg);
     z-index: 2;
     transition-delay: 0.3s;
 }
 
 .how-cards-container.animate-cards .hw-card { opacity: 1; }
-.how-cards-container.animate-cards .hw-card--sms  { transform: translateX(36px) rotate(-6deg); }
-.how-cards-container.animate-cards .hw-card--ai   { transform: translateY(-18px) rotate(1deg); }
-.how-cards-container.animate-cards .hw-card--ctrl { transform: translateX(-36px) rotate(5deg); }
+.how-cards-container.animate-cards .hw-card--sms  { transform: translateY(28px) rotate(-8deg); }
+.how-cards-container.animate-cards .hw-card--ai   { transform: translateY(-14px) rotate(0deg); }
+.how-cards-container.animate-cards .hw-card--ctrl { transform: translateY(28px) rotate(8deg); }
 
 .hw-card:hover {
-    transform: translateY(-14px) rotate(0deg) !important;
+    transform: translateY(-18px) rotate(0deg) !important;
     z-index: 10 !important;
     box-shadow: 0 40px 80px rgba(0,0,0,0.32), 0 12px 28px rgba(0,0,0,0.18);
 }
