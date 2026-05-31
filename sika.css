@@ -1491,21 +1491,44 @@ nav {
     }
 }
 
-@media (max-width: 1200px) {
-    .phone-stage.active #card-expenses {
-        left: -300px !important;
+@media (max-width: 1024px) {
+    .phone-stage {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        height: auto !important;
+        gap: 20px !important;
+        margin: 40px auto 0 !important;
     }
 
-    .phone-stage.active #card-categories {
-        right: -300px !important;
+    .phone-shell {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 260px !important;
+        height: 500px !important;
+        margin-bottom: 20px !important;
     }
 
-    .phone-stage.active #card-weekly {
-        left: -320px !important;
+    .phone-stage.active .feature-card,
+    .feature-card {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        max-width: 400px !important;
+        pointer-events: auto !important;
+        animation: none !important;
     }
 
-    .phone-stage.active #card-budget {
-        right: -320px !important;
+    .doodle {
+        display: none !important;
     }
 }
 
@@ -1523,48 +1546,6 @@ nav {
         letter-spacing: -1.5px;
     }
 
-    .phone-stage {
-        transform: scale(0.7);
-        height: 450px;
-    }
-
-    .phone-stage.active #card-expenses {
-        left: -180px !important;
-        top: -80px !important;
-    }
-
-    .phone-stage.active #card-categories {
-        right: -180px !important;
-        top: -20px !important;
-    }
-
-    .phone-stage.active #card-weekly {
-        left: -200px !important;
-        top: 180px !important;
-    }
-
-    .phone-stage.active #card-budget {
-        right: -200px !important;
-        top: 240px !important;
-    }
-
-    .phone-stage.active #card-danger {
-        bottom: -120px !important;
-    }
-
-    .feature-card {
-        width: 220px;
-        padding: 16px;
-    }
-
-    .fc-title {
-        font-size: 16px;
-    }
-
-    .fc-sub {
-        font-size: 12px;
-    }
-
     .solution-section {
         padding: 80px 24px;
     }
@@ -1576,25 +1557,6 @@ nav {
 }
 
 @media (max-width: 600px) {
-    .phone-stage {
-        transform: scale(0.6);
-        margin-top: 40px;
-    }
-
-    .phone-stage.active .feature-card {
-        left: 50% !important;
-        right: auto !important;
-        transform: translate(-50%, 0) scale(0.9) !important;
-        opacity: 0;
-        /* Hide cards on very small mobile to focus on phone, or stack them */
-        pointer-events: none;
-    }
-
-    .phone-stage.active #card-danger {
-        opacity: 1;
-        bottom: -80px !important;
-        width: 260px;
-    }
 
     .comm-container {
         padding: 60px 24px;
@@ -2366,8 +2328,7 @@ nav {
     position: relative;
     opacity: 0;
     box-shadow:
-        0 12px 32px rgba(0,0,0,0.06),
-        0 4px 12px rgba(0,0,0,0.04),
+        0 4px 12px rgba(0,0,0,0.02),
         inset 0 1px 0 rgba(255,255,255,0.6);
     transition:
         opacity 0.7s ease,
@@ -2408,8 +2369,7 @@ nav {
     transform: translateY(-20px) rotate(0deg) !important;
     z-index: 10 !important;
     box-shadow:
-        0 20px 48px rgba(0,0,0,0.12),
-        0 8px 20px rgba(0,0,0,0.08);
+        0 8px 24px rgba(0,0,0,0.04);
 }
 
 .hw-card__step {
