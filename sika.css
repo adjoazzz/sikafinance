@@ -2694,3 +2694,92 @@ nav {
         padding: 5px 12px;
     }
 }
+
+/* ── MOBILE FIXES ─────────────────────────────────────────────── */
+/* Append to bottom of sika.css                                   */
+
+/* MODAL — mobile */
+@media (max-width: 600px) {
+    .email-modal-overlay {
+        align-items: flex-end;         /* slide up from bottom */
+        padding: 0;
+    }
+
+    .email-modal {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 28px 28px 0 0;  /* bottom sheet feel */
+        padding: 32px 24px 40px;
+        text-align: center;
+    }
+
+    .modal-close-btn {
+        top: 16px;
+        right: 16px;
+    }
+
+    .email-modal h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    .email-modal p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    /* stack input and button vertically */
+    .email-modal .cta-group {
+        flex-direction: column;
+        background: transparent;
+        border: none;
+        padding: 0;
+        gap: 12px;
+    }
+
+    .email-modal .cta-input {
+        width: 100%;
+        background: #F3F4F6;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 12px;
+        padding: 16px 20px;
+        font-size: 16px;     /* prevents iOS zoom on focus */
+        text-align: left;
+    }
+
+    .email-modal .btn-primary {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+}
+
+/* COMM TITLE — fix avatars breaking mid-sentence on mobile */
+@media (max-width: 600px) {
+    .comm-title {
+        font-size: 32px;
+        gap: 0;
+        line-height: 1.2;
+    }
+
+    /* hide the inline avatars on mobile — they break the layout */
+    .comm-title .avatars {
+        display: none;
+    }
+
+    /* make the flex row collapse to a normal line */
+    .comm-title span {
+        display: block;
+        width: 100%;
+    }
+
+    .comm-sub {
+        font-size: 16px;
+        padding: 0 16px;
+    }
+
+    .comm-sub svg {
+        display: none;  /* hide the arrow doodle on mobile */
+    }
+}
