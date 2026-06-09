@@ -389,3 +389,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// ── MOBILE FEATURE CARD SCROLL REVEAL ────────────────────────
+// Add this to the bottom of sika.js
+
+if (window.innerWidth <= 1024) {
+    const featureCards = document.querySelectorAll('.feature-card');
+
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    featureCards.forEach(card => cardObserver.observe(card));
+}

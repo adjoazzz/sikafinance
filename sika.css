@@ -2783,3 +2783,78 @@ nav {
         display: none;  /* hide the arrow doodle on mobile */
     }
 }
+
+/* ── STICKY PHONE SCROLL — MOBILE ONLY ──────────────────────── */
+/* Append to bottom of sika.css                                  */
+
+@media (max-width: 1024px) {
+
+    /* 1. Turn the hero into a scroll container */
+    .hero {
+        overflow: visible; /* allow sticky to work */
+    }
+
+    /* 2. Stack hero-inner normally but give phone-stage sticky behaviour */
+    .hero-inner {
+        position: relative;
+    }
+
+    /* 3. Sticky phone shell */
+    .phone-shell {
+        position: sticky !important;
+        top: 80px !important; /* sits just below nav */
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 240px !important;
+        height: 460px !important;
+        z-index: 10;
+        margin-bottom: 0 !important;
+    }
+
+    /* 4. Phone stage becomes a tall scroll wrapper */
+    .phone-stage {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding-bottom: 40px;
+    }
+
+    /* 5. Feature cards stack below the sticky phone as scroll content */
+    .phone-stage.active .feature-card,
+    .feature-card {
+        display: flex !important;
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        max-width: 340px !important;
+        margin: 16px auto !important;
+        border-radius: 20px !important;
+        padding: 20px !important;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06) !important;
+        animation: none !important;
+    }
+
+    /* 6. Cards animate in on scroll using AOS instead of JS position */
+    .feature-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .feature-card.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 7. Hide doodles on mobile — they don't work without absolute positioning */
+    .doodle {
+        display: none !important;
+    }
+}
