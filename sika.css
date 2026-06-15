@@ -34,9 +34,10 @@
     --hero-gif: url('hero-bg.gif');
 }
 
-html {
+/* html {
     scroll-behavior: smooth;
-}
+    /* scroll-snap-type: y proximity; 
+} */
 
 body {
     font-family: 'Inter', sans-serif;
@@ -181,27 +182,61 @@ nav {
     padding: 12px 24px;
 }
 
-/* HERO */
+/* HERO — light theme */
 .hero {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     position: relative;
-    padding: 120px 48px 80px;
-    overflow: hidden;
+    padding: 140px 48px 200px; /* increase bottom padding to extend the section's height */
+    overflow: visible; /* allow content to extend beyond the box and be revealed on scroll */
+    background: #ffffff;
 }
 
 .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(to bottom, rgba(244, 244, 244, 0.2) 0%, rgba(244, 244, 244, 0.95) 100%), var(--hero-gif);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #ffffff;
     overflow: hidden;
     display: block;
     z-index: 0;
+}
+
+.hero-wordmark {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start; /* anchor from top instead of bottom */
+    justify-content: space-between;
+    transform: translateY(500px); /* push the letters down so only their tops show in the initial viewport */
+    pointer-events: none;
+    user-select: none;
+}
+
+.hero-wordmark span {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: #1A1630;
+}
+
+.hero-wordmark .wm-left {
+    transform: translateX(0%);
+    font-size: clamp(600px, 0vw, 560px);
+}
+
+.hero-wordmark .wm-right {
+    transform: translateX(-0.9%);
+    font-size: clamp(600px, 0vw, 560px);
+}
+
+@media (max-width: 1024px) {
+    .hero-wordmark {
+        display: none;
+    }
 }
 
 .hero-bg::before,
@@ -450,14 +485,6 @@ nav {
     background: rgba(0, 0, 0, 0.03);
 }
 
-/* PHONE + FLOATING CARDS STAGE */
-.phone-stage {
-    position: relative;
-    width: 320px;
-    height: 580px;
-    animation: fadeUp 0.8s 0.4s ease both;
-}
-
 .phone-shell {
     position: absolute;
     left: 50%;
@@ -473,9 +500,25 @@ nav {
         0 0 0 12px #E2E8F0,
         0 30px 60px rgba(0, 0, 0, 0.05),
         0 10px 20px rgba(0, 0, 0, 0.03);
-    /* Layred soft shadow inspired by reference image */
     overflow: hidden;
     z-index: 2;
+    animation: phoneEnter 0.8s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes phoneEnter {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(40px) scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes phoneFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-14px); }
 }
 
 .phone-screen {
@@ -988,6 +1031,26 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    opacity: 0;
+    transform: translateY(120px) scale(0.92);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.solution-right.in-view .sol-card-wrap {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.solution-right.in-view .sol-card-wrap:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.solution-right.in-view .sol-card-wrap:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.solution-right.in-view .sol-card-wrap:nth-child(3) {
+    transition-delay: 0.3s;
 }
 
 .sol-card-header h3 {
@@ -1427,6 +1490,14 @@ nav {
 .msg-bot:nth-child(4) {
     animation-delay: 3.6s;
 }
+
+.phone-stage {
+    position: relative;
+    width: 320px;
+    height: 580px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}  
 
 /* Scroll-triggered: hero cards slide right */
 .phone-stage.scrolled #card-expenses,
@@ -2577,15 +2648,6 @@ nav {
     .compare-grid { grid-template-columns: 1fr; }
 }
 
-.hero-inner {
-    width: 100%;
-    max-width: 1200px;
-    box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-/* Title — single unified clamp, no breakpoint override fighting it */
 .hero-title {
     width: 100%;
     max-width: 100%;
@@ -2822,39 +2884,82 @@ nav {
         padding-bottom: 40px;
     }
 
-    /* 5. Feature cards stack below the sticky phone as scroll content */
-    .phone-stage.active .feature-card,
-    .feature-card {
-        display: flex !important;
-        position: relative !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        transform: none !important;
-        opacity: 1 !important;
-        width: 100% !important;
-        max-width: 340px !important;
-        margin: 16px auto !important;
-        border-radius: 20px !important;
-        padding: 20px !important;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.06) !important;
-        animation: none !important;
-    }
-
-    /* 6. Cards animate in on scroll using AOS instead of JS position */
-    .feature-card {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .feature-card.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* 7. Hide doodles on mobile — they don't work without absolute positioning */
-    .doodle {
-        display: none !important;
-    }
 }
+
+/* ── NARRATIVE / PROBLEM SECTION ─────────────────────────── */
+.narrative-section {
+    background: #ffffff;
+    padding: 140px 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.narrative-inner {
+    max-width: 880px;
+    width: 100%;
+}
+
+.narrative-text {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(24px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+    color: #1A1630;
+}
+
+.nw {
+    opacity: 0.18;
+    transition: opacity 0.4s ease, color 0.4s ease;
+    display: inline-block;
+}
+
+.nw.nw--dim {
+    font-weight: 400;
+    color: #1A1630;
+}
+
+.nw--strong {
+    font-weight: 800;
+}
+
+.nw--brand {
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--purple-600), var(--coral-400));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nw.nw--brand {
+    -webkit-text-fill-color: transparent;
+}
+
+.nw.in-view {
+    opacity: 1;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 50%;
+    background: var(--purple-50);
+    font-size: 0.6em;
+    vertical-align: middle;
+    margin: 0 2px;
+}
+
+@media (max-width: 600px) {
+    .narrative-section {
+        padding: 80px 20px;
+    }
+
+}
+
+/* .hero-snap-point {
+    scroll-snap-align: start;
+    height: 1px;
+} */

@@ -1,3 +1,17 @@
+// Smooth scroll with Lenis
+const lenis = new Lenis({
+    duration: 2,        // higher = more "heavy"/slow glide
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // ease-out
+    smoothWheel: true,
+    smoothTouch: false,   // keep native scroll on mobile/touch
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
 // Initialize AOS (Animate on Scroll)
 if (typeof AOS !== 'undefined') {
     AOS.init({
@@ -5,6 +19,8 @@ if (typeof AOS !== 'undefined') {
         once: true,
         offset: 100
     });
+
+    lenis.on('scroll', AOS.refresh);
 }
 
 // Select DOM elements
@@ -390,6 +406,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Solution section — cards slide up and fan into grid on scroll
+const solutionRight = document.querySelector('.solution-right');
+if (solutionRight) {
+    const solutionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                solutionRight.classList.add('in-view');
+                solutionObserver.unobserve(solutionRight);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    solutionObserver.observe(solutionRight);
+}
+
+// Narrative section — word-by-word reveal on scroll
+const narrativeWords = document.querySelectorAll('.narrative-section .nw');
+if (narrativeWords.length > 0) {
+    const narrativeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            } else {
+                entry.target.classList.remove('in-view');
+            }
+        });
+    }, {
+        threshold: 0,
+        rootMargin: '0px 0px -10% 0px'
+    });
+
+    narrativeWords.forEach(word => narrativeObserver.observe(word));
+}
+
 // ── MOBILE FEATURE CARD SCROLL REVEAL ────────────────────────
 // Add this to the bottom of sika.js
 
@@ -405,4 +455,25 @@ if (window.innerWidth <= 1024) {
     }, { threshold: 0.2 });
 
     featureCards.forEach(card => cardObserver.observe(card));
+}
+
+// Subtle fade on SIKA wordmark as the narrative section approaches
+const heroWordmark = document.querySelector('.hero-wordmark');
+const narrativeSection = document.getElementById('narrative');
+
+if (heroWordmark && narrativeSection) {
+    window.addEventListener('scroll', () => {
+        const narrativeTop = narrativeSection.getBoundingClientRect().top;
+        const viewportHeight = window.innerHeight;
+
+        // Start fading when narrative section is within 1 viewport height of entering view
+        const fadeStart = viewportHeight * 1.2;
+        const fadeEnd = viewportHeight * 0.3;
+
+        let progress = (fadeStart - narrativeTop) / (fadeStart - fadeEnd);
+        progress = Math.min(Math.max(progress, 0), 1); // clamp 0–1
+
+        const opacity = 1 - progress * 0.4; // fades from 1 down to 0.6
+        heroWordmark.style.opacity = opacity;
+    });
 }
