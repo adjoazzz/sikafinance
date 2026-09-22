@@ -22,7 +22,82 @@
     </nav>
 
     <!-- HERO -->
-        <section class="hero" id="hero">
+    <section class="hero hero-redesign" id="hero">
+        <div class="hero-bg">
+            <div class="orb3"></div>
+        </div>
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <p class="hero-kicker">Sika tracks your money in Telegram.</p>
+                <h1 class="hero-title">Money moves. Sika keeps receipts.</h1>
+                <p class="hero-sub">
+                    Forward your transaction SMS alerts automatically to Telegram. Sika logs, categorises,
+                    and shows you exactly where your money went. No spreadsheets. No manual entry.
+                </p>
+                <div class="hero-cta-row" id="heroCTA">
+                    <button class="btn-primary" onclick="openEmailModal()">Get started for GHS 20</button>
+                    <div id="heroSuccess" class="success-message-inline">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Check your email to get started
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone-stage" id="phoneStage">
+                <div class="hero-chip hero-chip-left">
+                    <span class="hero-chip-label">Logged today</span>
+                    <strong>GHS 236.80</strong>
+                </div>
+                <div class="hero-chip hero-chip-right">
+                    <span class="hero-chip-label">Budget left</span>
+                    <strong>GHS 190</strong>
+                </div>
+                <div class="phone-shell">
+                    <div class="phone-screen">
+                        <div class="tg-header">
+                            <div class="tg-avatar">S</div>
+                            <div>
+                                <div class="tg-name">Sika Bot</div>
+                                <div class="tg-status">online</div>
+                            </div>
+                        </div>
+                        <div class="tg-messages">
+                            <div class="msg msg-in" style="animation: msgPop 0.3s 0.8s ease both; opacity:0">
+                                MTN MoMo: You paid GHS 142.50 at Shoprite Accra Mall.
+                            </div>
+                            <div class="msg-receipt" style="animation: msgPop 0.3s 1.2s ease both; opacity:0">
+                                <div class="receipt-header">MoMo Receipt</div>
+                                <div class="receipt-amount">GHS 142.50</div>
+                                <div class="receipt-sub">Groceries - Just now</div>
+                            </div>
+                            <div class="typing-indicator" style="opacity:0">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                            <div class="msg msg-bot" style="animation: msgPop 0.3s 1.7s ease both; opacity:0">
+                                <div class="bot-summary">
+                                    <div class="bot-label">Logged</div>
+                                    <div class="bot-row"><span>Category</span><strong>Groceries</strong></div>
+                                    <div class="bot-row"><span>Monthly spend</span><strong>GHS 610</strong></div>
+                                    <div class="bot-row"><span>Budget left</span><strong style="color:#3B6D11">GHS 190</strong></div>
+                                </div>
+                            </div>
+                            <div class="msg msg-bot msg-warning" style="animation: msgPop 0.3s 2.1s ease both; opacity:0">
+                                <div class="bot-summary">
+                                    <div class="bot-row">You have spent 76% of your groceries budget this month.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="hero hero-legacy" id="heroLegacy">
             <div class="hero-bg">
                 <div class="orb3"></div>
             </div>
@@ -34,7 +109,7 @@
 
 
             <h1 class="hero-title">
-                <span id="typewriter-text">Track every cedi</span>
+                <span>Track every cedi</span>
             </h1>
 
             <p class="hero-sub">
