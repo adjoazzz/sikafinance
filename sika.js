@@ -148,7 +148,7 @@ function payWithPaystack(email) {
     let handler = PaystackPop.setup({
         key: 'pk_test_33ae2ee580d1e7fb5e3e829d92a8c77e70f719c7', // YOUR PUBLIC KEY
         email: email,
-        amount: 5000, // Amount in pesewas (5000 = 50 GHS)
+        amount: 2000, // Amount in pesewas (2000 = 20 GHS/year)
         currency: 'GHS',
         ref: 'SIKA_' + Math.floor((Math.random() * 1000000000) + 1), // Unique ref
         callback: function (response) {
